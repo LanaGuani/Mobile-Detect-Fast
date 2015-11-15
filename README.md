@@ -6,7 +6,7 @@ Class to increase the performance of Mobile Detect lib.
 
 https://github.com/serbanghita/Mobile-Detect
 
-##### Performance
+### Performance
 ```
     $uaList = array(
         'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)',
@@ -65,13 +65,13 @@ https://github.com/serbanghita/Mobile-Detect
     echo "$elapsed seconds fast version\n";
 
 ```
-##### Result:
+### Result:
 ```
 2.9710 seconds native version
 0.4411 seconds fast version
 ```
 
-##### How
+### How
 
 Mobile Detect uses a loop with regular expressions to determine the device, and PHP is very slow on this. By reducing the size of the string in the regular expression we get increased performance.
 
@@ -79,7 +79,7 @@ The information theory says that the most frequent words provide less informatio
 
 What we do is create an array ($irrelevant) with the list of "irrelevant words" to exclude of User Agent.
 
-##### Help
+### Help
 
 No method is overwritten, you can create an Mobile_Detect_Fast instance and continue using the native methods of the class.
 
