@@ -91,3 +91,6 @@ Added 3 new methods: isMobileFast, isTabletFast and isPhoneFast.
     $detect->isTabletFast(); // equivalent to $detect->isTablet();
     $detect->isPhoneFast();  // equivalent to $detect->isMobile() && !$detect->isTablet()
 ```
+### Version
+
+    2.8.0 for 2.8.x of Mobile Detect

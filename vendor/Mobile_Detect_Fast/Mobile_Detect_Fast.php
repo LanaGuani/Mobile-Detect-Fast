@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  *
  * The MIT License
  *
@@ -25,6 +25,19 @@
  * THE SOFTWARE.
  */
 
+
+/**
+ * Mobile Detect Fast
+ * =====================
+ *
+ * Class to increase the performance of Mobile Detect lib.
+ *
+ * Requires Mobile Detect: https://github.com/serbanghita/Mobile-Detect
+ *
+ * Compatible whith 2.8.x of Mobile Detect
+ *
+ * @version     2.8.0
+ */
 class Mobile_Detect_Fast extends Mobile_Detect
 {
     protected $isMobile   = null;
