@@ -93,4 +93,4 @@ Added 3 new methods: isMobileFast, isTabletFast and isPhoneFast.
 ```
 ### Version
 
-    2.8.0 for 2.8.x of Mobile Detect
+    Version 2.8.0 for 2.8.x of Mobile Detect
