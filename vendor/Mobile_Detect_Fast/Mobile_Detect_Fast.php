@@ -129,6 +129,36 @@ class Mobile_Detect_Fast extends Mobile_Detect
             'facebookexternalhit',
         ),
     );
+    protected $mobileSure = array(
+        'Mobile',
+        'mobile',
+        'iPhone',
+        'iPod',
+        'BlackBerry',
+        'IEMobile',
+        'Kindle',
+        'NetFront',
+        'Silk-Accelerated',
+        'hpwOS',
+        'webOS',
+        'Minimo',
+        'Opera Mobi',
+        'Opera Mini',
+        'Blazer',
+        'Dolfin',
+        'Fennec',
+    );
+    protected $tabletSure = array(
+        'Tablet',
+        'tablet',
+        'iPad',
+    );
+    protected $phoneSure = array(
+        'iPhone',
+        'Phone',
+        'phone',
+    );
+
 
     /**
      * Construct.
@@ -146,12 +176,27 @@ class Mobile_Detect_Fast extends Mobile_Detect
         $this->UAforMobile = preg_replace($regexForMobile, '', $this->userAgent);
         $this->UAforTablet = preg_replace($regexForTablet, '', $this->userAgent);
         // sometimes the user agent is something like "( ; , 2.1 )" in that case it is not necessary check
-        if (!preg_match('/\w/', $this->UAforMobile) && strpos($this->userAgent, 'Mobile') === false) {
+        if (!preg_match('/\w/', $this->UAforMobile)) {
             $this->isMobile = false;
             $this->isPhone  = false;
         }
-        if (!preg_match('/\w/', $this->UAforTablet) && strpos($this->userAgent, 'Tablet') === false) {
+        if (!preg_match('/\w/', $this->UAforTablet)) {
             $this->isTablet = false;
+        }
+        foreach ($this->mobileSure as $str) {
+            if (strpos($this->userAgent, $str) !== false) {
+                $this->isMobile = true;
+            }
+        }
+        foreach ($this->tabletSure as $str) {
+            if (strpos($this->userAgent, $str) !== false) {
+                $this->isTablet = true;
+            }
+        }
+        foreach ($this->phoneSure as $str) {
+            if (strpos($this->userAgent, $str) !== false) {
+                $this->isPhone = true;
+            }
         }
     }
 
@@ -164,11 +209,7 @@ class Mobile_Detect_Fast extends Mobile_Detect
     public function isMobileFast($httpHeaders = null)
     {
         if ($this->isMobile === null) {
-            if (strpos($this->userAgent, 'Mobile') !== false) {
-                $this->isMobile = true;
-            } else {
-                $this->isMobile = $this->isMobile($this->UAforMobile, $httpHeaders);
-            }
+            $this->isMobile = $this->isMobile($this->UAforMobile, $httpHeaders);
         }
         return $this->isMobile;
     }
@@ -182,11 +223,7 @@ class Mobile_Detect_Fast extends Mobile_Detect
     public function isTabletFast($httpHeaders = null)
     {
         if ($this->isTablet === null) {
-            if (strpos($this->userAgent, 'Tablet') !== false) {
-                $this->isTablet = true;
-            } else {
-                $this->isTablet = $this->isTablet($this->UAforTablet, $httpHeaders);
-            }
+            $this->isTablet = $this->isTablet($this->UAforTablet, $httpHeaders);
         }
         return $this->isTablet;
     }

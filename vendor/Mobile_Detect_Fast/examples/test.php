@@ -1,23 +1,56 @@
 <?php
 
+
     /*
      * Result:
      *
+     *   Mobile_Detect native version detection for common UA:
+     *   4.4974 seconds native version for common UA
+     *
+     *   Mobile_Detect_Fast fast version detection for common UA:
+     *   0.5429 seconds fast version for common UA
+     *
      *   Mobile_Detect native version detection for not mobile:
-     *   33 fails
+     *   0 fails
      *   Mobile_Detect native version detection for mobile:
-     *   36 fails
-     *   3.2852 seconds native version
+     *   29 fails
+     *   4.1812 seconds native version
      *
      *   Mobile_Detect_Fast fast version detection for not mobile:
-     *   33 fails
+     *   0 fails
      *   Mobile_Detect_Fast fast version detection for mobile:
-     *   35 fails
-     *   1.6445 seconds fast version
+     *   28 fails
+     *   1.7568 seconds fast version
      */
 
-    $browserUA = file('browser.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);  // http://www.zytrax.com/tech/web/browser_ids.htm
-    $mobileUA  = file('mobile.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);   // http://www.zytrax.com/tech/web/mobile_ids.html
+    $commonUA  = file('common.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    $browserUA = file('browser.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    $mobileUA  = file('mobile.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+    $start = microtime(true);
+    echo "Mobile_Detect native version detection for common UA:\n";
+    for ($i=0; $i<20; $i++) {
+        foreach($commonUA as $ua) {
+            $detect = new Mobile_Detect(null, $ua);
+            $detect->isMobile();
+        }
+    }
+    $end = microtime(true);
+    $elapsed = number_format($end - $start, 4);
+    echo "$elapsed seconds native version for common UA\n\n";
+
+    echo "Mobile_Detect_Fast fast version detection for common UA:\n";
+    $fails = 0;
+    $start = microtime(true);
+    for ($i=0; $i<20; $i++) {
+        foreach($commonUA as $ua) {
+            $detect = new Mobile_Detect_Fast(null, $ua);
+            $detect->isMobileFast();
+        }
+    }
+    $end = microtime(true);
+    $elapsed = number_format($end - $start, 4);
+    echo "$elapsed seconds fast version for common UA\n\n";
 
     echo "Mobile_Detect native version detection for not mobile:\n";
     $fails = 0;
