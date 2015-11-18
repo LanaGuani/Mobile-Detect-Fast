@@ -36,6 +36,8 @@
  *
  * Compatible whith 2.8.x of Mobile Detect
  *
+ * @link        gi repo:     https://bitbucket.org/lanaguani/mobile-detect-fast
+ *
  * @version     2.8.0
  */
 class Mobile_Detect_Fast extends Mobile_Detect
