@@ -14,7 +14,6 @@
      *   Mobile_Detect_Fast fast version detection for mobile:
      *   35 fails
      *   1.6445 seconds fast version
-     *
      */
 
     $browserUA = file('browser.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);  // http://www.zytrax.com/tech/web/browser_ids.htm

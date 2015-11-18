@@ -38,7 +38,7 @@
  *
  * @link        gi repo:     https://bitbucket.org/lanaguani/mobile-detect-fast
  *
- * @version     2.8.0
+ * @version     2.8.1
  */
 class Mobile_Detect_Fast extends Mobile_Detect
 {
