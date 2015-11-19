@@ -1,4 +1,4 @@
-# Mirror of origial repository:
+# Mirror (outdated) of origial repository:
 ### https://bitbucket.org/lanaguani/mobile-detect-fast
 
 # Mobile Detect Fast
