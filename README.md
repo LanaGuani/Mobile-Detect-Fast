@@ -1,3 +1,7 @@
+# Mirror of origial repository:
+### https://bitbucket.org/lanaguani/mobile-detect-fast
+### --------------------------------------------------
+
 # Mobile Detect Fast
 
 Class to increase the performance of Mobile Detect lib.
